@@ -33,7 +33,6 @@ public class Patient {
     private int age;
     private String sex;
     private int mobile;
-    private String insurance_id;
     private String address;
     
     @NotBlank
