@@ -28,11 +28,18 @@ public class Patient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotBlank
-    private String name;
+    private String first_name;
+    private String last_name;
+    private int age;
+    private String sex;
+    private int mobile;
+    private String insurance_id;
+    private String address;
+    
     @NotBlank
     private String email;
     private String phone;
-
+    	
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
@@ -42,9 +49,6 @@ public class Patient {
     @Temporal(TemporalType.TIMESTAMP)
     @LastModifiedDate
     private Date updatedAt;
-
-
-
 
 
 }
