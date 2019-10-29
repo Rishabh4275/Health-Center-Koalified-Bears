@@ -55,4 +55,60 @@ public class Patient_History {
     @Temporal(TemporalType.TIMESTAMP)
     @LastModifiedDate
     private Date updatedAt;
+
+	public int getCase_id() {
+		return case_id;
+	}
+
+	public void setCase_id(int case_id) {
+		this.case_id = case_id;
+	}
+
+	public int getPatient_id() {
+		return patient_id;
+	}
+
+	public void setPatient_id(int patient_id) {
+		this.patient_id = patient_id;
+	}
+
+	public String getDiagnose_code() {
+		return diagnose_code;
+	}
+
+	public void setDiagnose_code(String diagnose_code) {
+		this.diagnose_code = diagnose_code;
+	}
+
+	public String getInsurance_id() {
+		return insurance_id;
+	}
+
+	public void setInsurance_id(String insurance_id) {
+		this.insurance_id = insurance_id;
+	}
+
+	public Date getDate_of_admission() {
+		return date_of_admission;
+	}
+
+	public void setDate_of_admission(Date date_of_admission) {
+		this.date_of_admission = date_of_admission;
+	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
 }
