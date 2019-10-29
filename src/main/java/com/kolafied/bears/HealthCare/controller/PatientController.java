@@ -1,13 +1,22 @@
 package com.kolafied.bears.HealthCare.controller;
 
-import com.kolafied.bears.HealthCare.dao.PatientDao;
-import com.kolafied.bears.HealthCare.model.Patient;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 import javax.validation.Valid;
-import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.kolafied.bears.HealthCare.dao.PatientDao;
+import com.kolafied.bears.HealthCare.model.Patient;
 
 @RestController
 @RequestMapping({"/patients"})
@@ -39,9 +48,9 @@ public class PatientController {
 
         return patient.findById(id)
                 .map(record -> {
-                    record.setName(patientUpdate.getName());
+                    record.setFirstName(patientUpdate.getFirstName());
                     record.setEmail(patientUpdate.getEmail());
-                    record.setPhone(patientUpdate.getPhone());
+                    record.setMobile(patientUpdate.getMobile());
                     Patient updated = patient.save(record);
                     return ResponseEntity.ok().body(updated);
                 }).orElse(ResponseEntity.notFound().build());
