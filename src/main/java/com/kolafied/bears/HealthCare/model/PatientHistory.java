@@ -12,7 +12,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.util.Date;
 
-@Table(name = "patient")
+@Table(name = "patient_history")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -22,20 +22,19 @@ import java.util.Date;
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = {"createdAt", "updatedAt"},
         allowGetters = true)
-public class Patient {
+public class PatientHistory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long patientId;
+    private int case_id;
     @NotBlank
-    private String firstName;
-    private String lastName;
+    private int patient_id;
+    private String diagnose_code;
+    private String insurance_id;
     @NotBlank
-    private String email;
-    private int age;
-    private String sex;
-    private String mobile;
-    private String address;
+    private Date date_of_admission;
+    @NotBlank
+    private int doctor_id;
 
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
