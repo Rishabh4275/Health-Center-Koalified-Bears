@@ -10,6 +10,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -25,14 +26,23 @@ public class Appointment  {
     private Long id;
 
     @NotNull
-    private Long patient_id;
+    private String name;
 
     @NotNull
-    private Long doctor_id;
+    private String dept;
 
     @NotNull
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss.SSS")
-    private Timestamp time;
+    private String email;
+
+    @NotNull
+    private String mobile;
+
+
+    @NotNull
+    private Time time;
+
+    @NotNull
+    private Date date;
 
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -44,52 +54,85 @@ public class Appointment  {
     @LastModifiedDate
     private Date updatedAt;
 
-	public Long getId() {
-		return id;
-	}
+    public Appointment(@NotNull String name, @NotNull String dept, @NotNull String email, @NotNull String mobile, @NotNull Time time, @NotNull Date date) {
+        this.name = name;
+        this.dept = dept;
+        this.email = email;
+        this.mobile = mobile;
+        this.time = time;
+        this.date = date;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Long getId() {
 
-	public Long getPatient_id() {
-		return patient_id;
-	}
+        return id;
+    }
 
-	public void setPatient_id(Long patient_id) {
-		this.patient_id = patient_id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public Long getDoctor_id() {
-		return doctor_id;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setDoctor_id(Long doctor_id) {
-		this.doctor_id = doctor_id;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public Timestamp getTime() {
-		return time;
-	}
+    public String getDept() {
+        return dept;
+    }
 
-	public void setTime(Timestamp time) {
-		this.time = time;
-	}
+    public void setDept(String dept) {
+        this.dept = dept;
+    }
 
-	public Date getCreatedAt() {
-		return createdAt;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
+    public String getMobile() {
+        return mobile;
+    }
 
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
-	}
-    
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public Time getTime() {
+        return time;
+    }
+
+    public void setTime(Time time) {
+        this.time = time;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 }

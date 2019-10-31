@@ -46,9 +46,12 @@ public class AppointmentController {
 
         return appointment.findById(id)
                 .map(record -> {
-                    record.setPatient_id(appointmentUpdate.getPatient_id());
-                    record.setDoctor_id(appointmentUpdate.getDoctor_id());
+                    record.setName(appointmentUpdate.getName());
+                    record.setDept(appointmentUpdate.getDept());
+                    record.setEmail(appointmentUpdate.getEmail());
+                    record.setMobile(appointmentUpdate.getMobile());
                     record.setTime(appointmentUpdate.getTime());
+                    record.setDate(appointmentUpdate.getDate());
                     Appointment updated = appointment.save(record);
                     return ResponseEntity.ok().body(updated);
                 }).orElse(ResponseEntity.notFound().build());
