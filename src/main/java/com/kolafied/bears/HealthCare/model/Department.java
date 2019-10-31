@@ -33,11 +33,11 @@ public class Department {
     @LastModifiedDate
     private Date updatedAt;
 
-	public Long getDeptId() {
+	public String getDeptId() {
 		return deptId;
 	}
 
-	public void setDeptId(Long deptId) {
+	public void setDeptId(String deptId) {
 		this.deptId = deptId;
 	}
 

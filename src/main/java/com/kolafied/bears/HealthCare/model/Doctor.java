@@ -24,7 +24,7 @@ public class Doctor {
     private String name;
     @NotBlank
     private String specialization;
-    private int mobile;
+    private String mobile;
     @NotBlank
     private String email;
     private String address;
@@ -65,11 +65,11 @@ public class Doctor {
 		this.specialization = specialization;
 	}
 
-	public int getMobile() {
+	public String getMobile() {
 		return mobile;
 	}
 
-	public void setMobile(int mobile) {
+	public void setMobile(String mobile) {
 		this.mobile = mobile;
 	}
 

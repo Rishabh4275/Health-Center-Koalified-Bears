@@ -52,19 +52,19 @@ public class Appointment  {
 		this.id = id;
 	}
 
-	public Patient getPatient_id() {
+	public Long getPatient_id() {
 		return patient_id;
 	}
 
-	public void setPatient_id(Patient patient_id) {
+	public void setPatient_id(Long patient_id) {
 		this.patient_id = patient_id;
 	}
 
-	public Doctor getDoctor_id() {
+	public Long getDoctor_id() {
 		return doctor_id;
 	}
 
-	public void setDoctor_id(Doctor doctor_id) {
+	public void setDoctor_id(Long doctor_id) {
 		this.doctor_id = doctor_id;
 	}
 

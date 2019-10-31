@@ -101,11 +101,11 @@ public class PatientHistory {
 		this.patient_id = patient_id;
 	}
 
-	public Doctor getDoctor_id() {
+	public Long getDoctor_id() {
 		return doctor_id;
 	}
 
-	public void setDoctor_id(Doctor doctor_id) {
+	public void setDoctor_id(Long doctor_id) {
 		this.doctor_id = doctor_id;
 	}
 

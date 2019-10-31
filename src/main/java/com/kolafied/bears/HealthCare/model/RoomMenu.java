@@ -18,6 +18,12 @@ public class RoomMenu implements Serializable {
     	return "roomId = "+roomId+", bedId = "+bedId;
     }
 
+	public RoomMenu(Long roomId, Long bedId) {
+		super();
+		this.roomId = roomId;
+		this.bedId = bedId;
+	}
+
 	public Long getRoomId() {
 		return roomId;
 	}
