@@ -58,16 +58,31 @@ public class RoomController {
 	    }
 	    
 	    @RequestMapping(method=RequestMethod.GET)
-	    public List<Room> getRoomByAvailibility(@RequestParam("availibility") String avail) {
+	    public List<Room> getRoomByAvailibility(@RequestParam(name="availibility",required=false) String avail,@RequestParam(name="roomType",required=false) String roomType) {
 	    	List<Room> rooms= room.findAll();
 	    	List<Room> ans=new ArrayList<Room>();
+	    	List<Room> availableRooms=new ArrayList<Room>();
 	        for(Room r: rooms) {
-	        	if(r.getAvailability()!=null && r.getAvailability().equals(avail)) {
-	        		ans.add(r);
+	        	if(avail!=null && r.getAvailability()!=null && r.getAvailability().equals(avail)) {
+	        		availableRooms.add(r);
 	        	}
 	        }
+	        	if(roomType==null) {
+	        		return availableRooms;
+
+	        	}else {
+	        		if(!availableRooms.isEmpty()) {
+	        			for(Room j: availableRooms) {
+	        				if(j.getRoomType()!=null && j.getRoomType().equals(roomType)) {
+	        					ans.add(j);
+	        				}
+	        			}
+	        		}
+	        	}
+	        
 	        return ans;
 	    }
+	    
 
 	    @PutMapping("/update")
 	    public ResponseEntity<Room> updateRoom(
