@@ -1,6 +1,8 @@
 package com.kolafied.bears.HealthCare.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -16,23 +18,20 @@ import java.util.Date;
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = {"createdAt", "updatedAt"},
         allowGetters = true)
-public class Appointment {
+public class Appointment  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull
-    @ManyToOne
-    @JoinColumn(name = "patientId",referencedColumnName = "patientId")
-    private Patient patient_id;
+    private Long patient_id;
 
     @NotNull
-    @ManyToOne
-    @JoinColumn(name ="doctor_id", referencedColumnName  ="doctor_id")
-    private Doctor doctor_id;
+    private Long doctor_id;
 
     @NotNull
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss.SSS")
     private Timestamp time;
 
     @Column(nullable = false, updatable = false)

@@ -6,6 +6,7 @@ import com.kolafied.bears.HealthCare.dao.DoctorDao;
 import com.kolafied.bears.HealthCare.model.Appointment;
 import com.kolafied.bears.HealthCare.model.Doctor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +26,7 @@ public class AppointmentController {
     public List<Appointment> getAll() {
         return appointment.findAll();
     }
+
 
     @PostMapping("/add")
     public Appointment addAppointment(@Valid @RequestBody Appointment appointmentAdd) {
