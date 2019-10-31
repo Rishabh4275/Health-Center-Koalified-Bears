@@ -47,7 +47,7 @@ public class AppointmentController {
         return appointment.findById(id)
                 .map(record -> {
                     record.setName(appointmentUpdate.getName());
-                    record.setDept(appointmentUpdate.getDept());
+                    record.setDeptId(appointmentUpdate.getDeptId());
                     record.setEmail(appointmentUpdate.getEmail());
                     record.setMobile(appointmentUpdate.getMobile());
                     record.setTime(appointmentUpdate.getTime());

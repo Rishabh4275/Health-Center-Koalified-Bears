@@ -17,8 +17,6 @@ import java.util.Date;
 @Table(name = "appointment")
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-@JsonIgnoreProperties(value = {"createdAt", "updatedAt"},
-        allowGetters = true)
 public class Appointment  {
 
     @Id
@@ -29,7 +27,7 @@ public class Appointment  {
     private String name;
 
     @NotNull
-    private String dept;
+    private String deptId;
 
     @NotNull
     private String email;
@@ -44,23 +42,19 @@ public class Appointment  {
     @NotNull
     private Date date;
 
-    @Column(nullable = false, updatable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    @CreatedDate
-    private Date createdAt;
+   
 
-    @Column(nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    @LastModifiedDate
-    private Date updatedAt;
-
-    public Appointment(@NotNull String name, @NotNull String dept, @NotNull String email, @NotNull String mobile, @NotNull Time time, @NotNull Date date) {
+    public Appointment(@NotNull String name, @NotNull String deptId, @NotNull String email, @NotNull String mobile, @NotNull Time time, @NotNull Date date) {
         this.name = name;
-        this.dept = dept;
+        this.deptId = deptId;
         this.email = email;
         this.mobile = mobile;
         this.time = time;
         this.date = date;
+    }
+    
+    public Appointment() {
+    	super();
     }
 
     public Long getId() {
@@ -80,12 +74,12 @@ public class Appointment  {
         this.name = name;
     }
 
-    public String getDept() {
-        return dept;
+    public String getDeptId() {
+        return deptId;
     }
 
-    public void setDept(String dept) {
-        this.dept = dept;
+    public void setDeptId(String deptId) {
+        this.deptId = deptId;
     }
 
     public String getEmail() {
@@ -120,19 +114,5 @@ public class Appointment  {
         this.date = date;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
-    }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
-    }
 }

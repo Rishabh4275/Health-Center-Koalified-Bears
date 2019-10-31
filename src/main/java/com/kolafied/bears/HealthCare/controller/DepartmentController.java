@@ -1,9 +1,8 @@
 package com.kolafied.bears.HealthCare.controller;
 
 import com.kolafied.bears.HealthCare.dao.DepartmentDao;
-import com.kolafied.bears.HealthCare.dao.DoctorDao;
+
 import com.kolafied.bears.HealthCare.model.Department;
-import com.kolafied.bears.HealthCare.model.Doctor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
