@@ -17,7 +17,6 @@ public class PatientController {
     @Autowired
     PatientDao patient;
 
-    @CrossOrigin
     @GetMapping("/all")
     public List<Patient> getAllNotes() {
         return patient.findAll();
