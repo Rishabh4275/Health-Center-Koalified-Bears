@@ -17,7 +17,7 @@ import java.io.Serializable;
 public class RoomMenu implements Serializable {
     private Long roomId;
 
-    private Long bedId;
+    private String bedId;
 
     //getter, setter methods
     

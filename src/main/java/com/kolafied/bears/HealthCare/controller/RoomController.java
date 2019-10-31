@@ -13,13 +13,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kolafied.bears.HealthCare.dao.RoomDao;
 import com.kolafied.bears.HealthCare.model.Room;
 import com.kolafied.bears.HealthCare.model.RoomMenu;
 import org.json.JSONObject;
 import java.util.Map;
+import java.util.ArrayList;
 
 @RestController
 @RequestMapping({"/rooms"})
@@ -27,6 +31,7 @@ public class RoomController {
 
 	 @Autowired
 	    RoomDao room;
+
 
 	    @GetMapping("/all")
 	    public List<Room> getAllNotes() {
@@ -37,7 +42,7 @@ public class RoomController {
 	    public Room addRoom(@Valid @RequestBody Map roomAdd) {
 	    	//System.out.println(roomAdd.toString());
 	    	Long roomId=Long.parseLong(roomAdd.get("roomId").toString());
-	    	Long bedId=Long.parseLong(roomAdd.get("bedId").toString());
+	    	String bedId=roomAdd.get("bedId").toString();
 	    	Long patientId=roomAdd.get("patientId")!=null ? Long.parseLong(roomAdd.get("patientId").toString()):null;
 	    	String availability=roomAdd.get("availability")!=null ? roomAdd.get("availability").toString():null;
 	    	 Room roomObj=new Room(roomId,bedId,roomAdd.get("roomType").toString(),patientId,availability);
@@ -51,12 +56,24 @@ public class RoomController {
 	                .map(record -> ResponseEntity.ok().body(record))
 	                .orElse(ResponseEntity.notFound().build());
 	    }
+	    
+	    @RequestMapping(method=RequestMethod.GET)
+	    public List<Room> getRoomByAvailibility(@RequestParam("availibility") String avail) {
+	    	List<Room> rooms= room.findAll();
+	    	List<Room> ans=new ArrayList<Room>();
+	        for(Room r: rooms) {
+	        	if(r.getAvailability()!=null && r.getAvailability().equals(avail)) {
+	        		ans.add(r);
+	        	}
+	        }
+	        return ans;
+	    }
 
 	    @PutMapping("/update")
 	    public ResponseEntity<Room> updateRoom(
 	                           @Valid @RequestBody Map roomupdate) {
 	    	Long roomId=Long.parseLong(roomupdate.get("roomId").toString());
-	    	Long bedId=Long.parseLong(roomupdate.get("bedId").toString());
+	    	String bedId=roomupdate.get("bedId").toString();
 	        return room.findById(new RoomMenu(roomId,bedId))
 	                .map(record -> {
 	                	if(roomupdate.containsKey("roomType")){

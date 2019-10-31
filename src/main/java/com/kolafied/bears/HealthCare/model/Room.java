@@ -16,6 +16,7 @@ import lombok.Getter;
 import javax.validation.constraints.NotBlank;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import com.kolafied.bears.HealthCare.model.RoomMenu;
 
 
 
@@ -40,7 +41,7 @@ public class Room {
 	private String availability;
 	
 	
-	public Room(Long roomId, Long bedId, String roomType, Long patientId, String availability) {
+	public Room(Long roomId, String bedId, String roomType, Long patientId, String availability) {
 		this.roomMenu=new RoomMenu(roomId,bedId);
 		this.roomType=roomType;
 		this.patientId=patientId;
