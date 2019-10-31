@@ -12,6 +12,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.util.Date;
 
+
 @Table(name = "doctor_details")
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,8 +21,6 @@ import java.util.Date;
 @Getter
 @Setter
 @EntityListeners(AuditingEntityListener.class)
-@JsonIgnoreProperties(value = {"createdAt", "updatedAt"},
-        allowGetters = true)
 public class Doctor {
 
     @Id
@@ -45,6 +44,8 @@ public class Doctor {
     @Temporal(TemporalType.TIMESTAMP)
     @LastModifiedDate
     private Date updatedAt;
+    
+
 
 	public Long getDoctor_id() {
 		return doctor_id;

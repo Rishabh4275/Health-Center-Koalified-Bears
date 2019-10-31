@@ -2,7 +2,6 @@ package com.kolafied.bears.HealthCare.model;
 
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -28,12 +27,14 @@ public class PatientHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long case_id;
+
     @NotNull
     private Long patient_id;
     private String diagnose_code;
     private String insurance_id;
     @NotNull
     private Date date_of_admission;
+ 
     @NotNull
     private Long doctor_id;
 
@@ -55,13 +56,7 @@ public class PatientHistory {
 		this.case_id = case_id;
 	}
 
-	public Long getPatient_id() {
-		return patient_id;
-	}
-
-	public void setPatient_id(Long patient_id) {
-		this.patient_id = patient_id;
-	}
+	
 
 	public String getDiagnose_code() {
 		return diagnose_code;
@@ -87,13 +82,7 @@ public class PatientHistory {
 		this.date_of_admission = date_of_admission;
 	}
 
-	public Long getDoctor_id() {
-		return doctor_id;
-	}
-
-	public void setDoctor_id(Long doctor_id) {
-		this.doctor_id = doctor_id;
-	}
+	
 
 	public Date getCreatedAt() {
 		return createdAt;

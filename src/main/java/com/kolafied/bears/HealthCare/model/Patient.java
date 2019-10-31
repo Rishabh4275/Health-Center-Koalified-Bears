@@ -46,6 +46,7 @@ public class Patient {
     @Temporal(TemporalType.TIMESTAMP)
     @LastModifiedDate
     private Date updatedAt;
+    
 
 	public Long getPatientId() {
 		return patientId;
