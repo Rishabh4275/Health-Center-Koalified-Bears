@@ -11,11 +11,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping({"/patients"})
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class PatientController {
 
     @Autowired
     PatientDao patient;
 
+    @CrossOrigin
     @GetMapping("/all")
     public List<Patient> getAllNotes() {
         return patient.findAll();
