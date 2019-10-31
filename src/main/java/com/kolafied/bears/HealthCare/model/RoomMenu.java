@@ -9,7 +9,7 @@ import javax.persistence.Embeddable;
 public class RoomMenu implements Serializable {
     private Long roomId;
 
-    private Long bedId;
+    private String bedId;
 
     //getter, setter methods
     
@@ -18,10 +18,14 @@ public class RoomMenu implements Serializable {
     	return "roomId = "+roomId+", bedId = "+bedId;
     }
 
-	public RoomMenu(Long roomId, Long bedId) {
+	public RoomMenu(Long roomId, String bedId) {
 		super();
 		this.roomId = roomId;
 		this.bedId = bedId;
+	}
+
+	public RoomMenu() {
+		super();
 	}
 
 	public Long getRoomId() {
@@ -32,11 +36,11 @@ public class RoomMenu implements Serializable {
 		this.roomId = roomId;
 	}
 
-	public Long getBedId() {
+	public String getBedId() {
 		return bedId;
 	}
 
-	public void setBedId(Long bedId) {
+	public void setBedId(String bedId) {
 		this.bedId = bedId;
 	}
     

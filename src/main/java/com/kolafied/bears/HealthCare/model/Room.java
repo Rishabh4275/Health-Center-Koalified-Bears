@@ -7,8 +7,15 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.EntityListeners;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+
 import com.kolafied.bears.HealthCare.model.RoomMenu;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+
+
 
 @Table(name="room")
 @Entity
@@ -23,8 +30,18 @@ public class Room {
 	private Long patientId;
 	private String availability;
 	
+	public Room() {
+	}
 	
-	public Room(Long roomId, Long bedId, String roomType, Long patientId, String availability) {
+	public Room(RoomMenu roomMenu, @NotBlank String roomType, Long patientId, String availability) {
+		super();
+		this.roomMenu = roomMenu;
+		this.roomType = roomType;
+		this.patientId = patientId;
+		this.availability = availability;
+	}
+
+	public Room(Long roomId, String bedId, String roomType, Long patientId, String availability) {
 		this.roomMenu=new RoomMenu(roomId,bedId);
 		this.roomType=roomType;
 		this.patientId=patientId;
