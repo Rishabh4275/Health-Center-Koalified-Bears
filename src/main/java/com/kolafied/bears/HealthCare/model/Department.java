@@ -25,8 +25,7 @@ import java.util.Date;
 public class Department {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long deptId;
+    private String deptId;
 
     @NotNull
     private String deptName;

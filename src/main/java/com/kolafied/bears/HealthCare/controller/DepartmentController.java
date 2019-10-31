@@ -30,14 +30,14 @@ public class DepartmentController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Department> getById(@PathVariable(value = "id") Long id) {
+    public ResponseEntity<Department> getById(@PathVariable(value = "id") String id) {
         return department.findById(id)
                 .map(record -> ResponseEntity.ok().body(record))
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Department> updateDepartment(@PathVariable(value = "id") Long id,
+    public ResponseEntity<Department> updateDepartment(@PathVariable(value = "id") String id,
                                                @Valid @RequestBody Department departmentUpdate) {
 
         return department.findById(id)
@@ -49,7 +49,7 @@ public class DepartmentController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteNote(@PathVariable(value = "id") Long id) {
+    public ResponseEntity<?> deleteNote(@PathVariable(value = "id") String id) {
         return department.findById(id)
                 .map(record -> {
                     department.deleteById(id);
