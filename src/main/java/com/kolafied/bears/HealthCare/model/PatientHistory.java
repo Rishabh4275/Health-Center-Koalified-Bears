@@ -5,7 +5,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -13,12 +12,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.util.Date;
 
 @Table(name = "patient_history")
-@AllArgsConstructor
-@NoArgsConstructor
-@Data
 @Entity
-@Getter
-@Setter
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = {"createdAt", "updatedAt"},
         allowGetters = true)
@@ -101,7 +95,23 @@ public class PatientHistory {
 		this.updatedAt = updatedAt;
 	}
 
+	public Long getPatient_id() {
+		return patient_id;
+	}
 
+	public void setPatient_id(Long patient_id) {
+		this.patient_id = patient_id;
+	}
+
+	public Doctor getDoctor_id() {
+		return doctor_id;
+	}
+
+	public void setDoctor_id(Doctor doctor_id) {
+		this.doctor_id = doctor_id;
+	}
+
+	
 
 
 

@@ -5,7 +5,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -14,12 +13,7 @@ import java.util.Date;
 
 
 @Table(name = "doctor_details")
-@AllArgsConstructor
-@NoArgsConstructor
-@Data
 @Entity
-@Getter
-@Setter
 @EntityListeners(AuditingEntityListener.class)
 public class Doctor {
 

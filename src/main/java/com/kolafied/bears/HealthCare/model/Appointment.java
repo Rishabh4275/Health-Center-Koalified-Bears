@@ -2,7 +2,6 @@ package com.kolafied.bears.HealthCare.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -13,12 +12,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 @Table(name = "appointment")
-@AllArgsConstructor
-@NoArgsConstructor
-@Data
 @Entity
-@Getter
-@Setter
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = {"createdAt", "updatedAt"},
         allowGetters = true)
@@ -50,4 +44,53 @@ public class Appointment {
     @Temporal(TemporalType.TIMESTAMP)
     @LastModifiedDate
     private Date updatedAt;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Patient getPatient_id() {
+		return patient_id;
+	}
+
+	public void setPatient_id(Patient patient_id) {
+		this.patient_id = patient_id;
+	}
+
+	public Doctor getDoctor_id() {
+		return doctor_id;
+	}
+
+	public void setDoctor_id(Doctor doctor_id) {
+		this.doctor_id = doctor_id;
+	}
+
+	public Timestamp getTime() {
+		return time;
+	}
+
+	public void setTime(Timestamp time) {
+		this.time = time;
+	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+    
 }

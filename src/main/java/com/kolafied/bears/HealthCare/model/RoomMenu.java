@@ -1,19 +1,11 @@
 package com.kolafied.bears.HealthCare.model;
 
-import javax.persistence.Embeddable;
-
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
 import java.io.Serializable;
+
+import javax.persistence.Embeddable;
 
 
 @Embeddable
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
 public class RoomMenu implements Serializable {
     private Long roomId;
 
@@ -25,4 +17,21 @@ public class RoomMenu implements Serializable {
     public String toString() {
     	return "roomId = "+roomId+", bedId = "+bedId;
     }
+
+	public Long getRoomId() {
+		return roomId;
+	}
+
+	public void setRoomId(Long roomId) {
+		this.roomId = roomId;
+	}
+
+	public Long getBedId() {
+		return bedId;
+	}
+
+	public void setBedId(Long bedId) {
+		this.bedId = bedId;
+	}
+    
 }

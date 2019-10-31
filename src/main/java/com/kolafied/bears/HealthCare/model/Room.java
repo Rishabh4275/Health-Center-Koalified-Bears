@@ -6,28 +6,12 @@ import javax.persistence.EmbeddedId;
 
 import javax.persistence.EntityListeners;
 import javax.persistence.Table;
-
+import javax.validation.constraints.NotBlank;
+import com.kolafied.bears.HealthCare.model.RoomMenu;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import lombok.AllArgsConstructor;
-
-import lombok.Data;
-import lombok.Getter;
-import javax.validation.constraints.NotBlank;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-
-
-
-
-@Table(name = "room")
-@AllArgsConstructor
-@NoArgsConstructor
-@Data
+@Table(name="room")
 @Entity
-@Getter
-@Setter
 @EntityListeners(AuditingEntityListener.class)
 public class Room {
 	
@@ -45,7 +29,50 @@ public class Room {
 		this.roomType=roomType;
 		this.patientId=patientId;
 		this.availability=availability;
+		
 	}
+
+
+	public RoomMenu getRoomMenu() {
+		return roomMenu;
+	}
+
+
+	public void setRoomMenu(RoomMenu roomMenu) {
+		this.roomMenu = roomMenu;
+	}
+
+
+	public String getRoomType() {
+		return roomType;
+	}
+
+
+	public void setRoomType(String roomType) {
+		this.roomType = roomType;
+	}
+
+
+	public Long getPatientId() {
+		return patientId;
+	}
+
+
+	public void setPatientId(Long patientId) {
+		this.patientId = patientId;
+	}
+
+
+	public String getAvailability() {
+		return availability;
+	}
+
+
+	public void setAvailability(String availability) {
+		this.availability = availability;
+	}
+	
+	
 }
 
 
