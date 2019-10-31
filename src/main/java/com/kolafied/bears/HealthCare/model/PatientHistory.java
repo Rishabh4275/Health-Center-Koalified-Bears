@@ -84,11 +84,6 @@ public class PatientHistory {
 		this.date_of_admission = date_of_admission;
 	}
 
-<<<<<<< HEAD
-	
-=======
-
->>>>>>> 21e3087a342eda2efb4cb510d2e85ace3330e2c3
 
 	public Date getCreatedAt() {
 		return createdAt;
