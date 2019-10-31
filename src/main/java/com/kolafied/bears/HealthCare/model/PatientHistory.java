@@ -36,7 +36,9 @@ public class PatientHistory {
     private Date date_of_admission;
  
     @NotNull
-    private Long doctor_id;
+	@ManyToOne
+	@JoinColumn(name ="doctor_id", referencedColumnName  ="doctor_id")
+    private Doctor doctor_id;
 
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -82,7 +84,11 @@ public class PatientHistory {
 		this.date_of_admission = date_of_admission;
 	}
 
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 21e3087a342eda2efb4cb510d2e85ace3330e2c3
 
 	public Date getCreatedAt() {
 		return createdAt;

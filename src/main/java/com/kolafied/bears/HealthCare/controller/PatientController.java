@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping({"/patients"})
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class PatientController {
 
     @Autowired
