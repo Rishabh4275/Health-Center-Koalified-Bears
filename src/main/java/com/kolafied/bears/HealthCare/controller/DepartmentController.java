@@ -42,7 +42,7 @@ public class DepartmentController {
 
         return department.findById(id)
                 .map(record -> {
-                    record.setDeptName(departmentUpdate.getDeptName());
+                    record.setDept_name(departmentUpdate.getDept_name());
                     Department updated = department.save(record);
                     return ResponseEntity.ok().body(updated);
                 }).orElse(ResponseEntity.notFound().build());

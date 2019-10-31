@@ -18,10 +18,13 @@ import java.util.Date;
 public class Department {
 
     @Id
-    private String deptId;
+    private String dept_id;
 
     @NotNull
-    private String deptName;
+    private String dept_name;
+    
+    @NotNull
+    private String dept_desc;
 
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -33,20 +36,28 @@ public class Department {
     @LastModifiedDate
     private Date updatedAt;
 
-	public String getDeptId() {
-		return deptId;
+	public String getDept_id() {
+		return dept_id;
 	}
 
-	public void setDeptId(String deptId) {
-		this.deptId = deptId;
+	public void setDept_id(String dept_id) {
+		this.dept_id = dept_id;
 	}
 
-	public String getDeptName() {
-		return deptName;
+	public String getDept_name() {
+		return dept_name;
 	}
 
-	public void setDeptName(String deptName) {
-		this.deptName = deptName;
+	public void setDept_name(String dept_name) {
+		this.dept_name = dept_name;
+	}
+
+	public String getDept_desc() {
+		return dept_desc;
+	}
+
+	public void setDept_desc(String dept_desc) {
+		this.dept_desc = dept_desc;
 	}
 
 	public Date getCreatedAt() {
@@ -64,5 +75,7 @@ public class Department {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+
+
     
 }
