@@ -22,15 +22,19 @@ public class PatientHistory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long case_id;
 
-    @NotNull
-    private Long patient_id;
+    
     private String diagnose_code;
     private String insurance_id;
     @NotNull
     private Date date_of_admission;
  
-    @NotNull
-    private Long doctor_id;
+    @ManyToOne
+    @JoinColumn(name="patientId")
+    private Patient patient;
+    
+    @ManyToOne
+    @JoinColumn(name="doctor_id")
+    private Doctor doctor;
 
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -93,21 +97,6 @@ public class PatientHistory {
 		this.updatedAt = updatedAt;
 	}
 
-	public Long getPatient_id() {
-		return patient_id;
-	}
-
-	public void setPatient_id(Long patient_id) {
-		this.patient_id = patient_id;
-	}
-
-	public Long getDoctor_id() {
-		return doctor_id;
-	}
-
-	public void setDoctor_id(Long doctor_id) {
-		this.doctor_id = doctor_id;
-	}
 
 	
 

@@ -10,6 +10,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.util.Date;
+import java.util.List;
 
 @Table(name = "patient")
 @Entity
@@ -30,6 +31,9 @@ public class Patient {
     private String sex;
     private String mobile;
     private String address;
+    
+    @OneToMany
+    private List<PatientHistory> patientHistory;
 
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
