@@ -16,6 +16,12 @@ public class PatientController {
 
     @Autowired
     PatientDao patient;
+    
+    @GetMapping("/")
+    public String HelloWorld() {
+        return "Hello World";
+    }
+
 
     @GetMapping("/all")
     public List<Patient> getAllNotes() {
