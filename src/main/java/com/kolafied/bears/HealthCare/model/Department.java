@@ -13,8 +13,6 @@ import java.util.Date;
 @Table(name = "department")
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-@JsonIgnoreProperties(value = {"createdAt", "updatedAt"},
-        allowGetters = true)
 public class Department {
 
     @Id
@@ -25,16 +23,6 @@ public class Department {
     
     @NotNull
     private String dept_desc;
-
-    @Column(nullable = false, updatable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    @CreatedDate
-    private Date createdAt;
-
-    @Column(nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    @LastModifiedDate
-    private Date updatedAt;
 
 	public String getDept_id() {
 		return dept_id;
@@ -58,22 +46,6 @@ public class Department {
 
 	public void setDept_desc(String dept_desc) {
 		this.dept_desc = dept_desc;
-	}
-
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
-
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
 	}
 
 

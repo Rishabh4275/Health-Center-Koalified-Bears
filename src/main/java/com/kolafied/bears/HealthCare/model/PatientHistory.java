@@ -14,8 +14,6 @@ import java.util.Date;
 @Table(name = "patient_history")
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-@JsonIgnoreProperties(value = {"createdAt", "updatedAt"},
-        allowGetters = true)
 public class PatientHistory {
 
     @Id
@@ -31,16 +29,6 @@ public class PatientHistory {
  
     @NotNull
     private Long doctor_id;
-
-    @Column(nullable = false, updatable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    @CreatedDate
-    private Date createdAt;
-
-    @Column(nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    @LastModifiedDate
-    private Date updatedAt;
 
 	public Long getCase_id() {
 		return case_id;
@@ -76,22 +64,6 @@ public class PatientHistory {
 		this.date_of_admission = date_of_admission;
 	}
 
-
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
-
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
-	}
 
 	public Long getPatient_id() {
 		return patient_id;
