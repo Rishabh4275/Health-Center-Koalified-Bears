@@ -32,7 +32,7 @@ public class Patient {
     private String mobile;
     private String address;
     
-    @OneToMany
+    @OneToMany(mappedBy="patient")
     private List<PatientHistory> patientHistory;
 
     @Column(nullable = false, updatable = false)

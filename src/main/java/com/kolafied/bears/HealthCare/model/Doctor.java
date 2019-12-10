@@ -30,7 +30,7 @@ public class Doctor {
     private String email;
     private String address;
     
-    @OneToMany
+    @OneToMany(mappedBy="doctor")
     private List<PatientHistory> patientHistory;
 
     @Column(nullable = false, updatable = false)
