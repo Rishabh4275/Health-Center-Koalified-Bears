@@ -2,6 +2,7 @@ package com.kolafied.bears.HealthCare.controller;
 
 
 import com.kolafied.bears.HealthCare.dao.PatientHistoryDao;
+import com.kolafied.bears.HealthCare.encrypt.Encryption;
 import com.kolafied.bears.HealthCare.model.Patient;
 import com.kolafied.bears.HealthCare.model.PatientHistory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,23 +10,29 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping({"/patienthistory"})
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class PatientHistoryController {
-
+	final String secretKey="database";
     @Autowired
     PatientHistoryDao patient;
 
     @GetMapping("/all")
     public List<PatientHistory> getAllNotes() {
     	List<PatientHistory> list=patient.findAll();
+    	List<PatientHistory> newlist= new ArrayList<PatientHistory>();
     	for(PatientHistory hist: list) {
-    		System.out.println(hist.toString());
+    		hist.setDiagnose_code(Encryption.decrypt(hist.getDiagnose_code(),secretKey));
+    		hist.setInsurance_id(Encryption.decrypt(hist.getInsurance_id(),secretKey));
+    		//System.out.println(hist.toString());
+    		newlist.add(hist);
     	}
-        return list;
+        return newlist;
     }
 
     @PostMapping("/add")
@@ -33,6 +40,10 @@ public class PatientHistoryController {
     	System.out.println("*******************");
     	System.out.println(patientAdd.toString());
     	System.out.println("*******************");
+    	String diag=patientAdd.getDiagnose_code();
+    	String insuranceId=patientAdd.getInsurance_id();
+    	patientAdd.setDiagnose_code(Encryption.encrypt(diag,secretKey));
+    	patientAdd.setInsurance_id(Encryption.encrypt(insuranceId,secretKey));
         return patient.save(patientAdd);
     }
 
