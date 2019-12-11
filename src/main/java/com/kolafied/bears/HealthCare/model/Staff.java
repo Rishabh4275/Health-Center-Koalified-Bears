@@ -1,5 +1,6 @@
 package com.kolafied.bears.HealthCare.model;
 
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
@@ -9,67 +10,59 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.util.Date;
+
 import java.util.List;
 
 
-@Table(name = "staff_details")
+
+
+@Table(name = "Staff_Details")
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 public class Staff {
-
-		
-		@Id
-	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    private Long staff_id;
-	    @NotBlank
-	    private String name;
-	    private String mobile;
-	    
-		private String email;
-	    private String address;
 	    
 	    @ManyToMany
 	    @JoinColumn(name="patientId")
 	    private List<Patient> patientStaff;
 	    
-	    public Long getStaff_id() {
-			return staff_id;
-		}
-
-		public void setStaff_id(Long staff_id) {
-			this.staff_id = staff_id;
-		}
-
-		public String getName() {
-			return name;
-		}
-
-		public void setName(String name) {
-			this.name = name;
-		}
-
-		public String getMobile() {
-			return mobile;
-		}
-
-		public void setMobile(String mobile) {
-			this.mobile = mobile;
-		}
-
-		public String getEmail() {
-			return email;
-		}
-
-		public void setEmail(String email) {
-			this.email = email;
-		}
-
-		public String getAddress() {
-			return address;
-		}
-
-		public void setAddress(String address) {
-			this.address = address;
-		}
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long eid;
+    @NotBlank
+    private String name;
+    @NotBlank
+    private String type;
+    private String dob;
+    @NotBlank
+    private String address;
+	public Long getEid() {
+		return eid;
+	}
+	public void setEid(Long eid) {
+		this.eid = eid;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	public String getDob() {
+		return dob;
+	}
+	public void setDob(String dob) {
+		this.dob = dob;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
 }

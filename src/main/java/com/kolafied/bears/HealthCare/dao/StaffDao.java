@@ -8,4 +8,3 @@ import com.kolafied.bears.HealthCare.model.Staff;
 @Repository
 public interface StaffDao extends JpaRepository<Staff, Long> {
 }
-

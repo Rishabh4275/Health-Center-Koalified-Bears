@@ -4,6 +4,7 @@ import com.kolafied.bears.HealthCare.dao.StaffDao;
 import com.kolafied.bears.HealthCare.model.Patient;
 import com.kolafied.bears.HealthCare.model.Staff;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +26,7 @@ public class StaffController {
     }
 
     @PostMapping("/add")
-    public Staff addPatient(@Valid @RequestBody Staff staffAdd) {
+    public Staff addStaff(@Valid @RequestBody Staff staffAdd) {
         return staff.save(staffAdd);
     }
 
@@ -37,17 +38,15 @@ public class StaffController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Staff> updatePatient(@PathVariable(value = "id") Long id,
+    public ResponseEntity<Staff> updateStaff(@PathVariable(value = "id") Long id,
                                                  @Valid @RequestBody Staff staffUpdate) {
 
         return staff.findById(id)
                 .map(record -> {
-                  // record.setPatient_id(patientUpdate.getPatient_id());
                     record.setName(staffUpdate.getName());
-                    record.setMobile(staffUpdate.getMobile());
-                    record.setEmail(staffUpdate.getEmail());
+                    record.setType(staffUpdate.getType());
+                    record.setDob(staffUpdate.getDob());
                     record.setAddress(staffUpdate.getAddress());
-                   // record.setDoctor_id(patientUpdate.getDoctor_id());
                     Staff updated = staff.save(record);
                     return ResponseEntity.ok().body(updated);
                 }).orElse(ResponseEntity.notFound().build());
@@ -57,7 +56,7 @@ public class StaffController {
     public ResponseEntity<?> deleteNote(@PathVariable(value = "id") Long id) {
         return staff.findById(id)
                 .map(record -> {
-                    staff.deleteById(id);
+                	staff.deleteById(id);
                     return ResponseEntity.ok().build();
                 }).orElse(ResponseEntity.notFound().build());
     }

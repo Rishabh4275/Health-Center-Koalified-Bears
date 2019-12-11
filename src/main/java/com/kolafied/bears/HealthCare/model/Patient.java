@@ -14,9 +14,7 @@ import java.util.List;
 
 @Table(name = "patient")
 @Entity
-@EntityListeners(AuditingEntityListener.class)
-@JsonIgnoreProperties(value = {"createdAt", "updatedAt"},
-        allowGetters = true)
+
 public class Patient {
 
     @Id
@@ -38,16 +36,7 @@ public class Patient {
     @ManyToMany(mappedBy="patientStaff")
     private List<Staff> staffList;
 
-    @Column(nullable = false, updatable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    @CreatedDate
-    private Date createdAt;
 
-    @Column(nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    @LastModifiedDate
-    private Date updatedAt;
-    
 
 	public Long getPatientId() {
 		return patientId;
@@ -112,25 +101,5 @@ public class Patient {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
-
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
-	}
-
-
-
-
 
 }
