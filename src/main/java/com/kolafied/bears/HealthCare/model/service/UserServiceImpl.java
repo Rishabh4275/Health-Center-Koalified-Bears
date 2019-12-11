@@ -1,7 +1,7 @@
 package com.kolafied.bears.HealthCare.model.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.kolafied.bears.HealthCare.model.User;
 import com.kolafied.bears.HealthCare.dao.UserRepository;
@@ -9,7 +9,7 @@ import com.kolafied.bears.HealthCare.dao.RoleRepository;
 import java.util.HashSet;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl{/* implements UserService {
     @Autowired
     private UserRepository userRepository;
     @Autowired
@@ -28,5 +28,5 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
-    }
+    }*/
 }

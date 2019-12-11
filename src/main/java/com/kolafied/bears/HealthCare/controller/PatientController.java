@@ -19,7 +19,7 @@ public class PatientController {
 
     @GetMapping("/all")
     public List<Patient> getAllNotes() {
-        return patient.findAll();
+        return  patient.findAll();
     }
 
     @PostMapping("/add")

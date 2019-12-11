@@ -21,11 +21,18 @@ public class PatientHistoryController {
 
     @GetMapping("/all")
     public List<PatientHistory> getAllNotes() {
-        return patient.findAll();
+    	List<PatientHistory> list=patient.findAll();
+    	for(PatientHistory hist: list) {
+    		System.out.println(hist.toString());
+    	}
+        return list;
     }
 
     @PostMapping("/add")
     public PatientHistory addPatient(@Valid @RequestBody PatientHistory patientAdd) {
+    	System.out.println("*******************");
+    	System.out.println(patientAdd.toString());
+    	System.out.println("*******************");
         return patient.save(patientAdd);
     }
 

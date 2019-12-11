@@ -13,7 +13,7 @@ import com.kolafied.bears.HealthCare.validator.UserValidator;
 
 @Controller
 public class UserController {
-    @Autowired
+  /*  @Autowired
     private UserService userService;
 
     @Autowired
@@ -58,5 +58,5 @@ public class UserController {
     @GetMapping({"/", "/welcome"})
     public String welcome(Model model) {
         return "welcome";
-    }
+    }*/
 }

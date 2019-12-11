@@ -5,6 +5,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -30,7 +32,16 @@ public class Doctor {
     private String email;
     private String address;
     
-    @OneToMany(mappedBy="doctor")
+    public List<PatientHistory> getPatientHistory() {
+		return patientHistory;
+	}
+
+	public void setPatientHistory(List<PatientHistory> patientHistory) {
+		this.patientHistory = patientHistory;
+	}
+
+	@OneToMany(mappedBy="doctor")
+	@JsonManagedReference(value="doctor_id")
     private List<PatientHistory> patientHistory;
 
     @Column(nullable = false, updatable = false)

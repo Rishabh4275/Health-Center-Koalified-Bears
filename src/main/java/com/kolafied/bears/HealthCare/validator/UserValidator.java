@@ -8,7 +8,7 @@ import org.springframework.validation.Validator;
 import com.kolafied.bears.HealthCare.model.User;
 import com.kolafied.bears.HealthCare.model.service.UserService;
 @Component
-public class UserValidator implements Validator {
+public class UserValidator{/* implements Validator {
     @Autowired
     private UserService userService;
 
@@ -37,5 +37,5 @@ public class UserValidator implements Validator {
         if (!user.getPasswordConfirm().equals(user.getPassword())) {
             errors.rejectValue("passwordConfirm", "Diff.userForm.passwordConfirm");
         }
-    }
+    }*/
 }
