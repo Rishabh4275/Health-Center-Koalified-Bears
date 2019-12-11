@@ -34,6 +34,9 @@ public class Patient {
     
     @OneToMany(mappedBy="patient")
     private List<PatientHistory> patientHistory;
+    
+    @ManyToMany(mappedBy="patientStaff")
+    private List<Staff> staffList;
 
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
