@@ -16,8 +16,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @EnableJpaAuditing
 public class HealthCareApplication {
 
-
-
+	
 	public static void main(String[] args) {
 		SpringApplication.run(HealthCareApplication.class, args);
 	}
