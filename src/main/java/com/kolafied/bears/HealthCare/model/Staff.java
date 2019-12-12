@@ -21,9 +21,9 @@ import java.util.List;
 @EntityListeners(AuditingEntityListener.class)
 public class Staff {
 	    
-	    @ManyToMany
-	    @JoinColumn(name="patientId")
-	    private List<Patient> patientStaff;
+	@ManyToMany
+	@JoinColumn(name="patientId")
+	private List<Patient> patientStaff;
 	    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

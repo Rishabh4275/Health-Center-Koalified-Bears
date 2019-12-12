@@ -12,8 +12,6 @@ import java.util.Date;
 
 @Table(name = "bill")
 @Entity
-
-
 public class Bill {
 
     @Id
@@ -21,10 +19,15 @@ public class Bill {
     private Long bId;
     @NotBlank
     private Date bDate;
-    private Long patientId;
+    //private Long patientId;
     private String email;
     @NotBlank
     private Float bAmt;
+    
+    @OneToOne
+    @JoinColumn(name="patientId")
+    private Patient patientBill;
+    
 	public Long getbId() {
 		return bId;
 	}
@@ -38,10 +41,10 @@ public class Bill {
 		this.bDate = bDate;
 	}
 	public Long getPatientId() {
-		return patientId;
+		return patientBill.getPatientId();
 	}
 	public void setPatientId(Long patientId) {
-		this.patientId = patientId;
+		this.patientBill.setPatientId(patientId);
 	}
 	public String getEmail() {
 		return email;

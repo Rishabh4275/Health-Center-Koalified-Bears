@@ -36,7 +36,8 @@ public class Patient {
     @ManyToMany(mappedBy="patientStaff")
     private List<Staff> staffList;
 
-
+    @OneToOne(mappedBy="patientBill")
+    private Bill bill;
 
 	public Long getPatientId() {
 		return patientId;
