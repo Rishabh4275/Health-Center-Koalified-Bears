@@ -39,8 +39,26 @@ public class Patient {
     @OneToOne(mappedBy="patientBill",fetch = FetchType.EAGER, cascade =  CascadeType.ALL)
     @JsonManagedReference(value="patientId")
     private Bill Bill;
+    
+//    @OneToOne(mappedBy="patientStaff", cascade =  CascadeType.ALL)
+//    @JsonManagedReference(value="patientSt")
+//    private List<Staff> staffList;
 
+	public Bill getBill() {
+		return Bill;
+	}
 
+	public void setBill(Bill bill) {
+		Bill = bill;
+	}
+
+//	public List<Staff> getStaffList() {
+//		return staffList;
+//	}
+//
+//	public void setStaffList(List<Staff> staffList) {
+//		this.staffList = staffList;
+//	}
 
 	public Long getPatientId() {
 		return patientId;
