@@ -17,21 +17,19 @@ import java.util.Date;
 public class Medicines {
 	
 	@Id
-    private String medicine_id;
-    @NotBlank
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long medicine_id;
     private String medicine_name;
-    @NotBlank
     private Long m_count;
-    @NotBlank
     private Long m_price;
-    @NotBlank
 
 
-	public String getMedicine_id() {
+
+	public Long getMedicine_id() {
 		return medicine_id;
 	}
 
-	public void setMedicine_id(String medicine_id) {
+	public void setMedicine_id(Long medicine_id) {
 		this.medicine_id = medicine_id;
 	}
 

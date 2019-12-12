@@ -29,28 +29,28 @@ public class MedicinesController {
 	    }
 
 	    @GetMapping("/{id}")
-	    public ResponseEntity<Medicines> getById(@PathVariable(value = "id") String id) {
+	    public ResponseEntity<Medicines> getById(@PathVariable(value = "id") Long id) {
 	        return medicines.findById(id)
 	                .map(record -> ResponseEntity.ok().body(record))
 	                .orElse(ResponseEntity.notFound().build());
 	    }
 
 	    @PutMapping("/{id}")
-	    public ResponseEntity<Medicines> updateMedicines(@PathVariable(value = "id") String id,
+	    public ResponseEntity<Medicines> updateMedicines(@PathVariable(value = "id") Long id,
 	                                               @Valid @RequestBody Medicines medicinesUpdate) {
 
 	        return medicines.findById(id)
 	                .map(record -> {
 	                    record.setMedicine_name(medicinesUpdate.getMedicine_name());
 	                    record.setM_count(medicinesUpdate.getM_count());
-	                    record.setM_price(medicinesUpdate.getM_price());
+	                   record.setM_price(record.getM_price());
 	                    Medicines updated = medicines.save(record);
 	                    return ResponseEntity.ok().body(updated);
 	                }).orElse(ResponseEntity.notFound().build());
 	    }
 
 	    @DeleteMapping("/{id}")
-	    public ResponseEntity<?> deleteNote(@PathVariable(value = "id") String id) {
+	    public ResponseEntity<?> deleteNote(@PathVariable(value = "id") Long id) {
 	        return medicines.findById(id)
 	                .map(record -> {
 	                    medicines.deleteById(id);
