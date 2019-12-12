@@ -3,6 +3,7 @@ package com.kolafied.bears.HealthCare.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -19,12 +20,18 @@ public class Bill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long bId;
-    @NotBlank
+    
     private Date bDate;
-    private Long patientId;
+    //private Long patientId;
     private String email;
-    @NotBlank
-    private Float bAmt;
+    
+    private int bAmt;
+    
+    @OneToOne
+    @JoinColumn(name="patientId",referencedColumnName="patientId")
+    @JsonBackReference(value="patientId")
+    private Patient patientBill;
+    
 	public Long getbId() {
 		return bId;
 	}
@@ -37,22 +44,22 @@ public class Bill {
 	public void setbDate(Date bDate) {
 		this.bDate = bDate;
 	}
-	public Long getPatientId() {
-		return patientId;
-	}
-	public void setPatientId(Long patientId) {
-		this.patientId = patientId;
-	}
+//	public Long getPatientId() {
+//		return patientBill.getPatientId();
+//	}
+//	public void setPatientId(Long patientId) {
+//		this.patientBill.setPatientId(patientId);
+//	}
 	public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Float getbAmt() {
+	public int getbAmt() {
 		return bAmt;
 	}
-	public void setbAmt(Float bAmt) {
+	public void setbAmt(int bAmt) {
 		this.bAmt = bAmt;
 	}
 }

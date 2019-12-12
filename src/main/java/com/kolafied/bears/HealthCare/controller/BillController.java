@@ -44,7 +44,7 @@ public class BillController {
 	        return bill.findById(id)
 	                .map(record -> {
 	                    record.setbDate(billUpdate.getbDate());
-	                    record.setPatientId(billUpdate.getPatientId());
+	                    //record.setPatientId(billUpdate.getPatientId());
 	                    record.setEmail(billUpdate.getEmail());
 	                    record.setEmail(billUpdate.getEmail());
 	                    record.setbAmt(billUpdate.getbAmt());

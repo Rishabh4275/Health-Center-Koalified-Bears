@@ -35,6 +35,10 @@ public class Patient {
     @OneToMany(mappedBy="patient",fetch = FetchType.EAGER, cascade =  CascadeType.ALL)
     @JsonManagedReference(value="patientId")
     private List<PatientHistory> patientHistory;
+    
+    @OneToOne(mappedBy="patientBill",fetch = FetchType.EAGER, cascade =  CascadeType.ALL)
+    @JsonManagedReference(value="patientId")
+    private Bill Bill;
 
 
 
