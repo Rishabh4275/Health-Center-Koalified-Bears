@@ -18,20 +18,21 @@ import java.util.Date;
 public class Instruments {
 	
     @Id
-    private String instrument_id;
-    @NotBlank
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long instrument_id;
+
     private String instrument_name;
-    @NotBlank
+
     private String uses;
     private Long i_count;
-    @NotBlank
+
     private Long i_price;
 
-    public String getInstrument_id() {
+    public Long getInstrument_id() {
 		return instrument_id;
 	}
 
-	public void setInstrument_id(String instrument_id) {
+	public void setInstrument_id(Long instrument_id) {
 		this.instrument_id = instrument_id;
 	}
 

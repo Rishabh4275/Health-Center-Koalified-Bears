@@ -4,6 +4,6 @@ import com.kolafied.bears.HealthCare.model.Instruments;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-public interface InstrumentsDao extends JpaRepository<Instruments, String>{
+public interface InstrumentsDao extends JpaRepository<Instruments, Long>{
 
 }

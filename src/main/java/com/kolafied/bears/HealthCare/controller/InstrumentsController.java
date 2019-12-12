@@ -32,29 +32,29 @@ public class InstrumentsController {
 	    }
 
 	    @GetMapping("/{id}")
-	    public ResponseEntity<Instruments> getById(@PathVariable(value = "id") String id) {
+	    public ResponseEntity<Instruments> getById(@PathVariable(value = "id") Long id) {
 	        return instruments.findById(id)
 	                .map(record -> ResponseEntity.ok().body(record))
 	                .orElse(ResponseEntity.notFound().build());
 	    }
 
 	    @PutMapping("/{id}")
-	    public ResponseEntity<Instruments> updateInstruments(@PathVariable(value = "id") String id,
+	    public ResponseEntity<Instruments> updateInstruments(@PathVariable(value = "id") Long id,
 	                                               @Valid @RequestBody Instruments instrumentsUpdate) {
 
 	        return instruments.findById(id)
 	                .map(record -> {
 	                    record.setInstrument_name(instrumentsUpdate.getInstrument_name());
-	                    record.setUses(instrumentsUpdate.getUses());
+	                    record.setUses(record.getUses());
 	                    record.setI_count(instrumentsUpdate.getI_count());
-	                    record.setI_price(instrumentsUpdate.getI_price());
+	                    record.setI_price(record.getI_price());
 	                    Instruments updated = instruments.save(record);
 	                    return ResponseEntity.ok().body(updated);
 	                }).orElse(ResponseEntity.notFound().build());
 	    }
 
 	    @DeleteMapping("/{id}")
-	    public ResponseEntity<?> deleteNote(@PathVariable(value = "id") String id) {
+	    public ResponseEntity<?> deleteNote(@PathVariable(value = "id") Long id) {
 	        return instruments.findById(id)
 	                .map(record -> {
 	                	instruments.deleteById(id);
