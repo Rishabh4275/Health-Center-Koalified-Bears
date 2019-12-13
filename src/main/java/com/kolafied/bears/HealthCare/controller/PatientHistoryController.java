@@ -2,7 +2,7 @@ package com.kolafied.bears.HealthCare.controller;
 
 
 import com.kolafied.bears.HealthCare.dao.PatientHistoryDao;
-import com.kolafied.bears.HealthCare.model.Patient;
+//import com.kolafied.bears.HealthCare.model.Patient;
 import com.kolafied.bears.HealthCare.model.PatientHistory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
